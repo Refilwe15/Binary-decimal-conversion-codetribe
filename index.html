@@ -30,24 +30,23 @@
     <div class="box">
       <section class="converter">
         <h2>Number Converter</h2>
-        <label for="binary-input">Enter binary number:</label>
-        <input id="binary-input" type="text" placeholder="e.g., 101010">
-        <button>Convert to Decimal</button>
+        <label for="binary-input">Enter Decimal:</label>
+        <input id="binary-input" type="text" placeholder="e.g., 12">
+        <button>Convert to Binary</button>
+        
       </section>
     </div>
 
       <!--Binary Arithmetic-->
-<div class="box">
-    <section class="converter">
-        <h2>Binary Calculator</h2>
-        <label for="first-input">First Binary Number:</label>
-        <input id="first-input" type="text" placeholder="e.g., 101010">
-
-        <label for="second-input">Second Binary Number:</label>
-        <input id="second-input" type="text" placeholder="e.g., 101010">
+    <div class="box">
+      <section class="converter">
+        <h2>Number Converter</h2>
+        <label for="binary-input">Enter binary number:</label>
+        <input id="binary-input" type="text" placeholder="e.g., 101010">
         <button>Convert to Decimal</button>
+        
       </section>
-      </div>
+    </div>
 </div>
 
       <!--BODMAS SECTION-->
@@ -74,9 +73,9 @@
       <section class="arithmetic">
         <h2>Binary Arithmetic</h2>
         <label>First Binary Number:</label>
-        <input type="text" placeholder="e.g., 1010">
+        <input id="bin1" type="text" placeholder="e.g., 1010">
         <label>Second Binary Number:</label>
-        <input type="text" placeholder="e.g., 0110">
+        <input id="bin2" type="text" placeholder="e.g., 0110">
 
         <div class="operations">
           <button class="add">+ Add</button>
@@ -85,38 +84,45 @@
         </div>
 
         <button class="calculate">Calculate</button>
+        <div id="arith-result"></div>
       </section>
     </main>
 
 
-    <!--ASCII TABLE-->
-        <div class="big-box">
-            <p>ASCII TABLE</p>
-            <table border="">
-            
-                <th>Decimal</th>
-                <th>Binary</th>
-                <th>Hexadecimal</th>
-                <th>Character</th>
-               
-                <tr>
-                    <td>
-                        <p>01</p>
-                        
-                    </td>
-                    <td>
-                        100001
-                    </td>
-                    <td>
-                        11111
-                    </td>
-                    <td>
-                        b
-                    </td>
-                </tr>
-            </table>
-        
+    <!-- ASCII TABLE -->
+    <div class="big-box">
+      <h2>ASCII TABLE</h2>
+      <table class="ascii-table">
+        <thead>
+          <tr>
+            <th>Decimal</th>
+            <th>Binary</th>
+            <th>Hexadecimal</th>
+            <th>Character</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ASCII from 32 (space) to 47 (/), you can add more -->
+          <tr><td>32</td><td>00100000</td><td>20</td><td>(space)</td></tr>
+          <tr><td>33</td><td>00100001</td><td>21</td><td>!</td></tr>
+          <tr><td>34</td><td>00100010</td><td>22</td><td>"</td></tr>
+          <tr><td>35</td><td>00100011</td><td>23</td><td>#</td></tr>
+          <tr><td>36</td><td>00100100</td><td>24</td><td>$</td></tr>
+          <tr><td>37</td><td>00100101</td><td>25</td><td>%</td></tr>
+          <tr><td>38</td><td>00100110</td><td>26</td><td>&</td></tr>
+          <tr><td>39</td><td>00100111</td><td>27</td><td>'</td></tr>
+          <tr><td>40</td><td>00101000</td><td>28</td><td>(</td></tr>
+          <tr><td>41</td><td>00101001</td><td>29</td><td>)</td></tr>
+          <tr><td>42</td><td>00101010</td><td>2A</td><td>*</td></tr>
+          <tr><td>43</td><td>00101011</td><td>2B</td><td>+</td></tr>
+          <tr><td>44</td><td>00101100</td><td>2C</td><td>,</td></tr>
+          <tr><td>45</td><td>00101101</td><td>2D</td><td>-</td></tr>
+          <tr><td>46</td><td>00101110</td><td>2E</td><td>.</td></tr>
+          <tr><td>47</td><td>00101111</td><td>2F</td><td>/</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
+  <srcipt src="script.js"></script>
 </body>
 </html>
