@@ -1,69 +1,73 @@
-// DECIMAL to BINARY
-document.querySelectorAll("button")[0].addEventListener("click", () => {
-  const decimalInput = document.querySelectorAll("input")[0];
-  const value = parseInt(decimalInput.value);
+// Modal Functions
+const modal = document.getElementById("result-modal");
+const modalText = document.getElementById("modal-result-text");
+const closeModal = document.getElementsByClassName("close")[0];
+
+function showModal(message) {
+  modalText.innerHTML = message;
+  modal.style.display = "block";
+}
+
+closeModal.onclick = () => modal.style.display = "none";
+window.onclick = (event) => { if (event.target === modal) modal.style.display = "none"; };
+
+// Decimal to Binary
+document.getElementById("dec-to-bin").addEventListener("click", () => {
+  const decimalInput = document.getElementById("decimal-input").value;
+  const value = parseInt(decimalInput);
   if (!isNaN(value)) {
-    alert(`Binary: ${value.toString(2)}`);
+    showModal(`Binary: ${value.toString(2)}`);
   } else {
-    alert("Please enter a valid decimal number.");
+    showModal("Please enter a valid decimal number.");
   }
 });
 
-// BINARY to DECIMAL
-document.querySelectorAll("button")[1].addEventListener("click", () => {
-  const binaryInput = document.querySelectorAll("input")[1];
-  const value = binaryInput.value;
-  if (/^[01]+$/.test(value)) {
-    alert(`Decimal: ${parseInt(value, 2)}`);
+// Binary to Decimal
+document.getElementById("bin-to-dec").addEventListener("click", () => {
+  const binaryInput = document.getElementById("binary-input").value;
+  if (/^[01]+$/.test(binaryInput)) {
+    showModal(`Decimal: ${parseInt(binaryInput, 2)}`);
   } else {
-    alert("Please enter a valid binary number.");
+    showModal("Please enter a valid binary number.");
   }
 });
 
-// QUICK INSERT FOR BODMAS
+// Quick Insert Operators
 const expressionInput = document.getElementById("expression");
-const quickButtons = document.querySelectorAll(".quick-insert .buttons button");
-quickButtons.forEach(btn => {
+document.querySelectorAll(".quick-insert .buttons button").forEach(btn => {
   btn.addEventListener("click", () => {
     expressionInput.value += ` ${btn.textContent} `;
   });
 });
 
-// BINARY EXPRESSION EVALUATOR
+// Evaluate Binary Expression (BODMAS)
 expressionInput.addEventListener("change", () => {
   try {
     const tokens = expressionInput.value.split(" ");
-    const converted = tokens.map(token => {
-      if (/^[01]+$/.test(token)) {
-        return parseInt(token, 2);
-      }
-      return token;
-    });
+    const converted = tokens.map(token => /^[01]+$/.test(token) ? parseInt(token, 2) : token);
     const result = eval(converted.join(" "));
     if (!isNaN(result)) {
-      alert(`Result in Binary: ${result.toString(2)}\nResult in Decimal: ${result}`);
+      showModal(`Result in Binary: ${result.toString(2)}<br>Result in Decimal: ${result}`);
     } else {
-      alert("Invalid Expression");
+      showModal("Invalid Expression");
     }
   } catch {
-    alert("Error evaluating expression");
+    showModal("Error evaluating expression");
   }
 });
 
-// ARITHMETIC OPERATIONS
-const inputs = document.querySelectorAll(".arithmetic input");
+// Binary Arithmetic Section
 let operation = "add";
-
 document.querySelector(".add").addEventListener("click", () => operation = "add");
 document.querySelector(".subtract").addEventListener("click", () => operation = "subtract");
 document.querySelector(".multiply").addEventListener("click", () => operation = "multiply");
 
 document.querySelector(".calculate").addEventListener("click", () => {
-  const a = inputs[0].value;
-  const b = inputs[1].value;
+  const a = document.getElementById("bin1").value;
+  const b = document.getElementById("bin2").value;
 
   if (!/^[01]+$/.test(a) || !/^[01]+$/.test(b)) {
-    alert("Enter valid binary numbers.");
+    showModal("Enter valid binary numbers.");
     return;
   }
 
@@ -72,16 +76,10 @@ document.querySelector(".calculate").addEventListener("click", () => {
   let result = 0;
 
   switch (operation) {
-    case "add":
-      result = num1 + num2;
-      break;
-    case "subtract":
-      result = num1 - num2;
-      break;
-    case "multiply":
-      result = num1 * num2;
-      break;
+    case "add": result = num1 + num2; break;
+    case "subtract": result = num1 - num2; break;
+    case "multiply": result = num1 * num2; break;
   }
 
-  alert(`Result in Binary: ${result.toString(2)}\nResult in Decimal: ${result}`);
+  showModal(`Result in Binary: ${result.toString(2)}<br>Result in Decimal: ${result}`);
 });
